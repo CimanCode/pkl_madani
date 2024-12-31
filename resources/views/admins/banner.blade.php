@@ -25,16 +25,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>jhon@email.com</td>
-                                    <td>
-                                        <a href="#"><button type="button" class="btn btn-warning m-2">Edit</button></a>
-                                        <a href="#"><button type="button" class="btn btn-danger m-2">Hapus</button></a>
-                                    </td>
-                                </tr>
+                                @foreach($banner as $data)
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>{{$data->judul}}</td>
+                                        <td>{{$data->deskripsi}}</td>
+                                        <td><img src="{{Storage::url($data->foto)}}" alt="" style="width: 200px;"></td>
+                                        <td>
+                                            <a href="{{route('update', ['id' => $data->id])}}"><button type="button" class="btn btn-warning m-2">Edit</button></a>
+                                            <a href="{{route('deleteBanner', ['id' => $data->id])}}"><button type="button" class="btn btn-danger m-2">Hapus</button></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
